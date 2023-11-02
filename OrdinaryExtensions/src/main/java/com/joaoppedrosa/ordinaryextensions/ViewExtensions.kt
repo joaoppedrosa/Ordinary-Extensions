@@ -23,7 +23,7 @@ fun View.toggleVisibility() {
     this.visibility = if (this.visibility == View.VISIBLE) View.GONE else View.VISIBLE
 }
 
-fun View.visibleIf(condition: Boolean) {
+fun View.showIf(condition: Boolean) {
     this.visibility = if (condition) View.VISIBLE else View.GONE
 }
 

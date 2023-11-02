@@ -1,13 +1,19 @@
 package com.joaoppedrosa.ordinaryextensions
 
+import android.text.Html
+import android.util.Patterns
 import java.util.Locale
 
 fun String.isEmailValid(): Boolean {
-    return android.util.Patterns.EMAIL_ADDRESS.matcher(this).matches()
+    return Patterns.EMAIL_ADDRESS.matcher(this).matches()
 }
 
 fun String.isPhoneNumberValid(): Boolean {
-    return android.util.Patterns.PHONE.matcher(this).matches()
+    return Patterns.PHONE.matcher(this).matches()
+}
+
+fun String.isValidUrl(): Boolean {
+    return Patterns.WEB_URL.matcher(this).matches()
 }
 
 fun String.toCamelCase(): String {
@@ -18,10 +24,6 @@ fun String.toTitleCase(): String {
     return split(" ").joinToString(" ") { it -> it.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() } }
 }
 
-fun String.isValidUrl(): Boolean {
-    return android.util.Patterns.WEB_URL.matcher(this).matches()
-}
-
 fun String.stripHtmlTags(): String {
-    return android.text.Html.fromHtml(this, android.text.Html.FROM_HTML_MODE_LEGACY).toString()
+    return Html.fromHtml(this, Html.FROM_HTML_MODE_LEGACY).toString()
 }
